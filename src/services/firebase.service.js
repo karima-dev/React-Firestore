@@ -27,16 +27,18 @@ export const authServise = () => {
       return res.user;
     } catch (err) {
 
-    
+
       return err.message
     }
   };
   const signIn = async (email, password) => {
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      await auth.signInWithEmailAndPassword(email, password).then(res => {
+        return auth.currentUser
+      });
     } catch (err) {
 
-      alert(err.message);
+      return err.message;
     }
   };
 
