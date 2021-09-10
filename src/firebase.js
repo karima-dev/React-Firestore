@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
-
+import "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyBxiOuSWIPA3vz_wSD6cZ8xMjTVUqO0HF8",
   authDomain: "todoapp-16088.firebaseapp.com",
@@ -11,6 +11,8 @@ const firebaseConfig = {
   databaseURL: "https://bezkoder-firebase.firebaseio.com",
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
-export default firebase.firestore();
+const firestoreDb = app.firestore();
+const firebaseAuth = app.auth();
+export {firebaseAuth,firestoreDb};

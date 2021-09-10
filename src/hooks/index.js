@@ -1,2 +1,4 @@
 import { useFirestore } from "./useFirestore";
-export { useFirestore };
+import { useAuth } from "./useAuth";
+
+export { useFirestore, useAuth };

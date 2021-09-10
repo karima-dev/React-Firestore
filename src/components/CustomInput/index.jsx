@@ -10,7 +10,8 @@ const index = ({
   onChange,
   name,
   className,
-  value
+  value,
+  id
 }) => {
   return (
     <Form>
@@ -22,6 +23,7 @@ const index = ({
         name={name}
         className={className}
         value={value}
+        id={id}
       />
     </Form>
   );

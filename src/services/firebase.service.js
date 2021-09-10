@@ -1,7 +1,7 @@
-import firebase from "../firebase";
+import { firestoreDb, firebaseAuth } from "../firebase";
 
 export const firestore = (collectionName) => {
-  const db = firebase.collection(collectionName);
+  const db = firestoreDb.collection(collectionName);
 
   const getAll = () => {
     return db;
@@ -19,4 +19,26 @@ export const firestore = (collectionName) => {
   return { getAll, create, update, remove };
 };
 
-export const auth = () => {};
+export const authServise = () => {
+  const auth = firebaseAuth;
+  const signUp = async (email, password) => {
+    try {
+      const res = await auth.createUserWithEmailAndPassword(email, password);
+      return res.user;
+    } catch (err) {
+
+    
+      return err.message
+    }
+  };
+  const signIn = async (email, password) => {
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (err) {
+
+      alert(err.message);
+    }
+  };
+
+  return { signIn, signUp }
+};
