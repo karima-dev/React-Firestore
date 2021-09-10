@@ -4,9 +4,9 @@ import CustomButton from "../../components/CustomButton";
 import { textInputProps } from "../../constants";
 import { buttonProps, collections } from "../../constants";
 import TodoCard from "../../components/TodoCard";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeAllTask, confirmTask } from "./actions";
+import { removeAllTask } from "./actions";
 import { useFirestore } from "../../hooks";
 
 
@@ -48,11 +48,9 @@ const TodoApp = () => {
       isDone: false,
     })
       .then((response) => {
-        console.log("testtt", response);
         setTodo({ title: "", heure: "" });
       })
       .catch((error) => {
-        console.log("testtt error", error);
       });
   };
 
@@ -68,10 +66,8 @@ const TodoApp = () => {
       case `delete_btn`:
         remove(e.target.name)
           .then((response) => {
-            console.log("testtt", response);
           })
           .catch((error) => {
-            console.log("testtt error", error);
           });
         break;
 
