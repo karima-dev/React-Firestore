@@ -3,11 +3,13 @@ import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import { textInputProps } from "../../constants";
 import { buttonProps } from "../../constants";
-import {useAuth} from '../../hooks'
+import {useAuth} from '../../hooks';
+import { useHistory } from 'react-router';
 const Inscription=()=>{
     const [email,setEmail] =useState('')
     const [password,setPassword] =useState('')
     const auth = useAuth();
+    const history = useHistory();
     const handleChange=(e)=>{
         switch(e.target.id){
             case "email":
@@ -30,6 +32,7 @@ const Inscription=()=>{
         console.log('testtt',res)
            setEmail('') 
            setPassword('') 
+           history.push('/login')
         }).catch(err=>{
             console.log('testtt err',err)
         })
