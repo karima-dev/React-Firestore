@@ -16,7 +16,7 @@ const TodoApp = () => {
   const todoList = useSelector((store) => store.tasksState.taskList);
   const { create, update, remove } = useFirestore(collections.todo);
 
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -34,10 +34,7 @@ const TodoApp = () => {
 
 
   const handleClick = (e) => {
-    if (e.target.name === "delete") {
-      dispatch(removeAllTask());
-      return;
-    }
+    
     if (!todo.title || !todo.heure) {
       alert("Add a task");
       return;
@@ -60,7 +57,6 @@ const TodoApp = () => {
     switch (e.target.id) {
       case `validate_btn`:
         update(e.target.name,{isDone:true});
-       // dispatch(confirmTask(e.target.name));
         break;
 
       case `delete_btn`:
@@ -137,13 +133,7 @@ const TodoApp = () => {
         text={buttonProps.text.ajouter}
         onClick={handleClick}
       />
-      <CustomButton
-        className={buttonProps.className.classpad}
-        color={buttonProps.color.outlineDanger}
-        text={buttonProps.text.delete}
-        name={"delete"}
-        onClick={handleClick}
-      />
+      
       <br></br>
       <br></br>
       {todoList.map((todo) => showResult(todo))}
