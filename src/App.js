@@ -18,6 +18,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     getAll().onSnapshot(getData);
+    dispatch({ type: 'LOGIN' })
   }, []);
 
   const getData = (items) => {

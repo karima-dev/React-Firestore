@@ -44,3 +44,18 @@ export const authServise = () => {
 
   return { signIn, signUp }
 };
+
+
+
+const auth = firebaseAuth;
+
+export const logIn = async (email, password) => {
+  try {
+    await auth.signInWithEmailAndPassword(email, password).then(res => {
+      return auth.currentUser
+    });
+  } catch (err) {
+
+    return err.message;
+  }
+}
